@@ -1,0 +1,20 @@
+<h1>質問投稿フォーム</h1>
+  <%= form_with model: @question do |f| %>
+    <h4>質問文</h4>
+      <%= f.text_area :text %>
+
+    <h4>選択肢1</h4>
+      <%= f.text_field :selected %>
+
+    <h4>選択肢2</h4>
+      <%= f.text_field :selected %>
+
+    <h4>選択肢3(任意)</h4>
+      <%= f.text_field :selected %>
+
+    <h4>選択肢4(任意)</h4>
+      <%= f.text_field :selected %><br>
+      <br>
+
+    <%= f.submit '投稿' %>
+  <% end %>
