@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   root 'public/homes#top'
   get 'about' => 'public/homes#about'
   scope module: 'public' do
-    resources :questions, only: [:new, :create, :index, :show]
+    resources :questions, only: [:new, :create, :index, :show] do
+      resources :answers, only: [:create]
+      resource :favorites, only: [:create, :destroy]
+    end
   end
   namespace :public do
 
