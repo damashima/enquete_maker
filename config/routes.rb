@@ -6,9 +6,6 @@ Rails.application.routes.draw do
   get 'end_users/unsubscribe' => 'public/end_users#unsubscribe', as: 'unsubscribe'
   patch 'end_users/withdraw' => 'public/end_users#withdraw', as: 'withdraw'
 
-  namespace :admin do
-    root to: "homes#top"
-  end
   root 'public/homes#top'
   get 'about' => 'public/homes#about'
   scope module: 'public' do
@@ -16,10 +13,16 @@ Rails.application.routes.draw do
       resources :answers, only: [:create]
       resource :favorites, only: [:create, :destroy]
     end
-  end
-  namespace :public do
 
   end
+  namespace :public do
+  end
+
+  namespace :admin do
+    root to: "homes#top"
+    resources :end_users, only: [:index, :show, :edit, :update]
+  end
+
   devise_for :end_users, controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'

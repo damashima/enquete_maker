@@ -1,0 +1,26 @@
+<h4><%= @end_user.name %>さんのユーザー情報編集</h4>
+<%= form_with model: @end_user, url: admin_end_user_path(@end_user.id), method: :patch do |f| %>
+  <table>
+    <tbody>
+      <tr>
+        <td>ユーザーID</td>
+        <td><%= @end_user.id %></td>
+      </tr>
+      <tr>
+        <td>ユーザー名</td>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= f.text_field :email %></td>
+      </tr>
+      <tr>
+        <td>ユーザーステータス</td>
+        <td><%= f.radio_button :is_deleted, false %><%= f.label :is_deleted, "有効" %>
+            <%= f.radio_button :is_deleted, true %><%= f.label :is_deleted, "退会" %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <%= f.submit '変更を保存' %>
+<% end %>

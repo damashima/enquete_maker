@@ -1,2 +1,24 @@
 <h1>質問詳細</h1>
 <p><%= @question.text %></p>
+<%= form_with(model: [@question, @answer], local: true) do |f| %>
+  <% @question.answers.each do |a|%>
+    <%= f.radio_button :answer_id, 1, class: :rd %><%= a.answer %>
+
+    <%= f.hidden_field :end_user_id, value: current_end_user.id %>
+  <% end %>
+  <%= f.submit%>
+<% end %>
+
+<% if @question.favorited_by?(current_end_user) %>
+    <p>
+      <%= link_to question_favorites_path(@question), method: :delete do %>
+        ♥<%= @question.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to question_favorites_path(@question), method: :post do %>
+        ♡<%= @question.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
