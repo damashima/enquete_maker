@@ -1,7 +1,8 @@
 class Public::QuestionsController < ApplicationController
   def new
     @question = Question.new
-    @question_select = @question.question_selects.build
+    @question_selects = @question.question_selects.build
+    
   end
 
   def create
@@ -22,6 +23,7 @@ class Public::QuestionsController < ApplicationController
 
   private
   def question_params
-    params.require(:question).permit(:text, :selected)
+    params.require(:question).permit(:text, question_selects_attributes: [:selected, :question_select_id])
+
   end
 end

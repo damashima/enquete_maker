@@ -1,28 +1,38 @@
-<h4><%= @end_user.name %>さんの詳細</h4>
-<table>
-  <tbody>
-    <tr>
-      <td>ユーザーID</td>
-      <td><%= @end_user.id %></td>
-    </tr>
-    <tr>
-      <td>ユーザー名</td>
-      <td><%= @end_user.name %></td>
-    </tr>
-    <tr>
-      <td>メールアドレス</td>
-      <td><%= @end_user.email %></td>
-    </tr>
-    <tr>
-      <td>ユーザーステータス</td>
-      <td><% if @end_user.is_deleted %>
-                  <p class="text-secondary"><strong>退会</strong></p>
-                <% else %>
-                  <p class="text-secondary"><strong>有効</strong></p>
-                <% end %>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<%= link_to "編集する", edit_admin_end_user_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-7 text-left">
+      <p class="text-success"><%= flash[:notice] %></p>
+      <h4><%= @end_user.name %>さんの詳細</h4>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td>ユーザーID</td>
+            <td><%= @end_user.id %></td>
+          </tr>
+          <tr>
+            <td>ユーザー名</td>
+            <td><%= @end_user.name %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @end_user.email %></td>
+          </tr>
+          <tr>
+            <td>ユーザーステータス</td>
+            <td><% if @end_user.is_deleted %>
+                        <p class="text-secondary"><strong>退会</strong></p>
+                      <% else %>
+                        <p class="text-secondary"><strong>有効</strong></p>
+                      <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <div class="col-7 text-right">
+          <%= link_to "編集する", edit_admin_end_user_path(@end_user), class: "btn btn-success" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,13 +1,17 @@
-<h1>質問詳細</h1>
+<h4>質問詳細</h4>
 <p><%= @question.text %></p>
-<%= form_with(model: [@question, @answer], local: true) do |f| %>
-  <% @question.answers.each do |a|%>
-    <%= f.radio_button :answer_id, 1, class: :rd %><%= a.answer %>
+<ul style="list-style-type: none">
+<%= form_with(model: [@question, @question.answers.build], local: true) do |f| %>
+  <% @question.question_selects.each do |q| %>
+    <li><label><%= f.radio_button :question_select_id, 1  %><%= q.question_selects %>テスト1</label></li>
+    <li><label><%= f.radio_button :question_select_id, 1  %><%= q.answers %>テスト2</label></li>
 
     <%= f.hidden_field :end_user_id, value: current_end_user.id %>
   <% end %>
-  <%= f.submit%>
+  <%= f.submit "回答" %>
 <% end %>
+</ul>
+
 
 <% if @question.favorited_by?(current_end_user) %>
     <p>

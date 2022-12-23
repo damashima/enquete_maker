@@ -1,26 +1,34 @@
-<h4>会員一覧</h4>
-<table>
-  <thead>
-    <tr>
-      <th>ユーザーID</th>
-      <th>ユーザー名</th>
-      <th>メールアドレス</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @end_users.each do |end_user| %>
-    <tr>
-      <td><%= end_user.id %></td>
-      <td><%= link_to end_user.name, admin_end_user_path(end_user) %></td>
-      <td><%= end_user.email %></td>
-      <td><% if end_user.is_deleted %>
-            <p class="text-secondary"><strong>退会</strong></p>
-            <% else %>
-            <p class="text-secondary"><strong>有効</strong></p>
+<div class="container">
+  <div class="col-2 offset-2 text-center">
+    <h4>会員一覧</h4>
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col-8">
+      <table class="table table-sm">
+        <thead class="thead-light">
+          <tr>
+            <th>ユーザーID</th>
+            <th>ユーザー名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @end_users.each do |end_user| %>
+          <tr>
+            <td><%= end_user.id %></td>
+            <td><%= link_to end_user.name, admin_end_user_path(end_user) %></td>
+            <td><%= end_user.email %></td>
+            <td><% if end_user.is_deleted %>
+                  <p class="text-secondary"><strong>退会</strong></p>
+                  <% else %>
+                  <p class="text-secondary"><strong>有効</strong></p>
+                <% end %>
+            </td>
+          </tr>
           <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

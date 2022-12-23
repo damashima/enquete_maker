@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'about' => 'public/homes#about'
   scope module: 'public' do
     resources :questions, only: [:new, :create, :index, :show] do
+      resources :question_selects
       resources :answers, only: [:create]
       resource :favorites, only: [:create, :destroy]
     end
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "homes#top"
     resources :end_users, only: [:index, :show, :edit, :update]
+    resources :questions, only: [:index, :show, :destroy]
   end
 
   devise_for :end_users, controllers: {
