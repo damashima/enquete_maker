@@ -4,7 +4,7 @@ class Public::AnswersController < ApplicationController
   def create
     @question = Question.find(params[:question_id])
     @question.answers.create(answer_params)
-    redirect_to question_params(@question)
+    redirect_to question_path(@question)
   end
 
   private

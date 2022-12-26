@@ -1,20 +1,11 @@
-<h1>質問投稿フォーム</h1>
+<h4>質問投稿フォーム</h4>
   <%= form_with model: @question do |f| %>
     <%= f.label :質問文 %>
     <%= f.text_area :text %><br>
 
     <%= f.fields_for :question_selects do |question_select| %>
-      <%= f.label :選択肢1 %>
-      <%= f.text_field :selected %><br>
-
-      <%= f.label :選択肢2 %>
-      <%= f.text_field :selected %><br>
-
-      <%= f.label :選択肢3 %>
-      <%= f.text_field :selected %><br>
-
-      <%= f.label :選択肢4 %>
-      <%= f.text_field :selected %><br>
+      <%= question_select.label :選択肢 %>
+      <%= question_select.text_field :selected %><br>
       <br>
     <% end %>
 
