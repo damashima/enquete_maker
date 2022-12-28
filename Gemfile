@@ -60,3 +60,5 @@ gem 'devise'
 gem "enum_help"
 
 gem "net-smtp"
+
+gem 'chartkick'

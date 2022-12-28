@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   scope module: 'public' do
     resources :questions, only: [:new, :create, :index, :show] do
       resources :question_selects
-      resources :answers, only: [:create]
+      resources :answers, only: [:create, :index]
       resource :favorites, only: [:create, :destroy]
     end
 
