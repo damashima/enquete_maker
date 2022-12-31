@@ -1,13 +1,17 @@
-<h4>質問投稿フォーム</h4>
-  <%= form_with model: @question do |f| %>
-    <%= f.label :質問文 %>
-    <%= f.text_area :text %><br>
+<div class="row justify-content-center offset-1">
+  <div class="col-9">
+    <h4>質問投稿フォーム</h4>
+      <%= form_with model: @question do |f| %>
+        <%= f.label :質問文 %>
+        <%= f.text_area :text %><br>
 
-    <%= f.fields_for :question_selects do |question_select| %>
-      <%= question_select.label :選択肢 %>
-      <%= question_select.text_field :selected %><br>
-      <br>
-    <% end %>
+        <%= f.fields_for :question_selects do |question_select| %>
+          <%= question_select.label :選択肢 %>
+          <%= question_select.text_field :selected %><br>
+          <br>
+        <% end %>
 
-    <%= f.submit '投稿' %>
-  <% end %>
+        <%= f.submit '投稿', class: "btn btn-success" %>
+      <% end %>
+  </div>
+</div>

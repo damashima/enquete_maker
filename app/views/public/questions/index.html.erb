@@ -1,3 +1,11 @@
+<div class="text-right">
+<%= search_form_for @q do |f| %>
+  <!--name_contは、あいまい検索を指定-->
+  <%= f.text_field :text_cont, placeholder: '検索ワード' %>
+  <%= f.submit "検索", class:"btn btn-primary" %>
+<% end %>
+</div>
+
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-8">
@@ -13,6 +21,7 @@
         </div>
       </div>
       <% end %>
+      <%= paginate @questions %>
     </div>
   </div>
 </div>

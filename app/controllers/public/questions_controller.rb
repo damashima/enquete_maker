@@ -1,5 +1,12 @@
 class Public::QuestionsController < ApplicationController
 
+  before_action :search
+
+  def search
+    # params[:q]のqには検索フォームに入力した値が入る
+    @q = Question.ransack(params[:q])
+  end
+
   def new
     @question = Question.new
     4.times do
@@ -16,7 +23,8 @@ class Public::QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.all.includes(:question_selects)
+    @q = Question.ransack(params[:q])
+    @questions = @q.result(distinct: true).includes(:question_selects).page(params[:page])
   end
 
   def show

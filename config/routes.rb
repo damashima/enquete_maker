@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get 'about' => 'public/homes#about'
   scope module: 'public' do
     resources :questions, only: [:new, :create, :index, :show] do
+      collection do
+    get 'search'
+    end
       resources :question_selects
       resources :answers, only: [:create, :index]
       resource :favorites, only: [:create, :destroy]

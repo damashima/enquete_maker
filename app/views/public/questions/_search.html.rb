@@ -1,0 +1,6 @@
+
+<%= search_form_for @q do |f| %>
+  <!--name_contは、あいまい検索を指定-->
+  <%= f.text_field :text_cont, placeholder: '検索ワード' %>
+  <%= f.submit "検索", class:"btn btn-primary" %>
+<% end %>

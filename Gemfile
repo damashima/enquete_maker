@@ -62,3 +62,7 @@ gem "enum_help"
 gem "net-smtp"
 
 gem 'chartkick'
+
+gem 'ransack'
+
+gem 'kaminari','~> 1.2.1'
