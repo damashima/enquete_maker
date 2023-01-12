@@ -5,7 +5,7 @@
       <% @questions.each do |question| %>
       <div class="d-flex flex-column bd-highlight">
         <div class="p-3 bd-highlight">
-          <%= link_to question.text, question_path(question) %>
+          <%= link_to question.text, admin_question_path(question) %>
         </div>
       </div>
       <% end %>

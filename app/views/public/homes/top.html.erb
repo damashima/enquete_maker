@@ -1,2 +1,23 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <div class="text-right">
+    <%= render 'public/questions/search', q: @q, url: questions_path %>
+  </div>
+
+  <div class="row justify-content-md-center">
+    <div class="col-8">
+      <br>
+      <div class="text-right">
+        <%= link_to "新規登録", new_question_path, class:"btn btn-primary" %>
+      </div>
+      <h4>質問一覧</h4>
+      <% @questions.each do |question| %>
+      <div class="d-flex flex-column bd-highlight">
+        <div class="p-3 bd-highlight">
+          <%= link_to question.text, question_path(question) %>
+        </div>
+      </div>
+      <% end %>
+      <%= paginate @questions %>
+    </div>
+  </div>
+</div>

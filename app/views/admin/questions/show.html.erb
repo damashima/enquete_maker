@@ -1,2 +1,9 @@
-<h1>Admin::Questions#show</h1>
-<p>Find me in app/views/admin/questions/show.html.erb</p>
+<h4>質問詳細</h4>
+  <p><%= @question.text %></p>
+  <ul style="list-style-type: none">
+    <% @question.question_selects.each do |question_select| %>
+    <li><%= question_select.selected %></li>
+    <% end %>
+  </ul>
+
+  <%= link_to "削除", question_path(@question), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
