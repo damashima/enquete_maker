@@ -1,4 +1,11 @@
 class Admin::EndUsersController < ApplicationController
+  before_action :set_search
+
+  def set_search
+    @q = Question.ransack(params[:q])
+    @questions = @q.result(distinct: true).includes(:question_selects)
+  end
+
   def index
     @end_users = EndUser.page(params[:page])
   end

@@ -53,6 +53,12 @@
   </header>
 
   <body>
+    <div class="container offset-1">
+      <div class="text-right">
+        <!-- 検索フォーム -->
+        <%= render 'public/questions/search', q: @q, url: questions_path %>
+      </div>
+    </div>
     <%= yield %>
   </body>
 </html>

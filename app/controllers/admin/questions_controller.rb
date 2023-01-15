@@ -1,4 +1,10 @@
 class Admin::QuestionsController < ApplicationController
+  before_action :set_search
+
+  def set_search
+    @q = Question.ransack(params[:q])
+    @questions = @q.result(distinct: true).includes(:question_selects)
+  end
 
   def show
     @question = Question.find(params[:id])

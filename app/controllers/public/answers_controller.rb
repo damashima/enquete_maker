@@ -1,5 +1,11 @@
 class Public::AnswersController < ApplicationController
   before_action :authenticate_end_user!
+  before_action :set_search
+
+  def set_search
+    @q = Question.ransack(params[:q])
+    @questions = @q.result(distinct: true).includes(:question_selects)
+  end
 
   def create
     @question = Question.find(params[:question_id])

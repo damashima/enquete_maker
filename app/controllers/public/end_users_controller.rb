@@ -1,5 +1,11 @@
 class Public::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
+  before_action :set_search
+
+  def set_search
+    @q = Question.ransack(params[:q])
+    @questions = @q.result(distinct: true).includes(:question_selects)
+  end
 
   def show
     @end_user = current_end_user

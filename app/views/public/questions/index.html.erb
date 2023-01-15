@@ -1,13 +1,11 @@
-<div class="container offset-1">
-  <div class="text-right">
-    <%= render 'search', q: @q, url: questions_path %>
-  </div>
-
+<div class="container">
   <div class="row justify-content-md-center">
     <div class="col-8">
       <br>
       <div class="text-right">
-        <%= link_to "新規登録", new_question_path, class:"btn btn-primary" %>
+        <% if end_user_signed_in? %>
+          <%= link_to "新規登録", new_question_path, class:"btn btn-primary" %>
+        <% end %>
       </div>
       <h4>質問一覧</h4>
       <% @questions.each do |question| %>

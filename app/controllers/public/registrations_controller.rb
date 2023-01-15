@@ -59,4 +59,11 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  before_action :set_search
+
+  def set_search
+    @q = Question.ransack(params[:q])
+    @questions = @q.result(distinct: true).includes(:question_selects)
+  end
 end
