@@ -1,6 +1,16 @@
 <div class="row justify-content-center offset-1">
   <div class="col-9">
     <h4>質問投稿フォーム</h4>
+
+    <% if @question.errors.any? %>
+      <%= @question.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @question.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
       <%= form_with model: @question do |f| %>
         <%= f.label :質問文 %>
         <%= f.text_area :text %><br>
